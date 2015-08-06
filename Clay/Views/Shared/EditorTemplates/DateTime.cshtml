@@ -1,0 +1,49 @@
+﻿@model System.DateTime?
+
+@{
+    string val = "";
+    DateTime globalDt = new DateTime();
+    if (Model.HasValue)
+    {
+        DateTime dt = (DateTime)Model;
+        val = dt.ToShortDateString();
+
+        globalDt = dt;
+    }
+    <div class='input-group date datePicker'>
+        <span class="input-group-sm">
+            @Html.TextBox("", @val, new
+            {
+                @class = "form-control datecontrol",
+                type = "date",
+                data_date_format = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern.ToLower()
+            })
+        </span>
+    </div>
+    <script type="text/javascript">
+    $(document).ready( function() {
+        var dateSupported = (function () {
+            var el = document.createElement('input'),
+            invalidVal = 'foo'; 
+            el.setAttribute('type', 'date');
+            el.setAttribute('value', invalidVal);
+            
+            return el.value !== invalidVal;
+        }());
+
+        //if browser has a default date picker attribute (ex Crome)
+        if (!dateSupported)
+            $('#@Html.IdForModel()').datepicker();
+        else {
+
+            var tempDate = new Date(@globalDt.Year, @globalDt.Month, @globalDt.Day, 0, 0, 0, 0);
+            var day = ("0" + tempDate.getDate()).slice(-2);
+            var month = ("0" + (tempDate.getMonth() + 1)).slice(-2);
+
+            var fullDate = tempDate.getFullYear() + "-" + (month) + "-" + (day);
+
+            $('#@Html.IdForModel()')[0].setAttribute("value", fullDate);
+        }
+    });
+</script>
+}

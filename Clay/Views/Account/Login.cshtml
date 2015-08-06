@@ -1,0 +1,58 @@
+﻿@using Clay.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+<style type="text/css">
+    .form-group {
+        margin-top: 15px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-login", role = "form", @action = (System.Configuration.ConfigurationManager.AppSettings["useSSLforLogin"] == "false" ? Request.Url.AbsoluteUri : Request.Url.AbsoluteUri.Replace("http:", "https:")) }))
+            {
+                @Html.AntiForgeryToken()
+                @*<h2 class="form-login-heading" style="padding-top:2px; padding-bottom:2px;">SING IN NOW</h2>*@
+                <div class="login-wrap">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "UserName" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <br />
+                    <input type="submit" value="Log in" class="btn btn-info btn-block" />
+
+                    <div class="registration">
+
+                        <p>
+                            @Html.ActionLink("Register as a new user", "Register")
+                        </p>
+                        @*    <p>
+                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                            </p>
+                            <p>
+                                @Html.ActionLink("Contact us", "Contact", "Home")
+                            </p>
+                        *@
+                    </div>
+
+                </div>
+            }
+        </section>
+
+    </div>
+    @*<div class="col-md-6">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

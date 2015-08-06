@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+    ViewBag.Title = "Users";
+    ViewBag.PageHeader = "<i class='fa fa-table'></i> Users";
+    
+}
+
+<thead>
+    <tr id="search">
+        <th>User Id</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>        
+        <th>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 twoPixelPadding">
+                    <button title="Create" onclick="javascript:window.location=('@Url.Action("Form", "AspNetUsers", null)')" class="btn-block btn btn-primary">
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 twoPixelPadding">
+                    <button title="Caution:this will clear your datatable state!" id="clearState" style="margin-right:7px" class="btn-block btn btn-danger">
+                        <i class="fa fa-recycle"></i>
+                    </button>
+                </div>
+            </div>
+        </th>
+    </tr>
+    <tr>
+        <th>User Id</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>        
+        <th class="all" style="text-align:center">Processes</th>
+    </tr>
+</thead>
+
+@* Global variables *@
+<input type="hidden" name="param" data-col="0" value="Id" />
+<input type="hidden" name="paramType" value="query" />

@@ -1,0 +1,69 @@
+﻿@using Clay.Models
+@model RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    ViewBag.ReturnUrl = Url.Action("Login", "Account", null); ;
+}
+<style type="text/css">
+    .form-group {
+        margin-top: 15px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <section id="loginForm">
+            @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-login", role = "form", @action = (System.Configuration.ConfigurationManager.AppSettings["useSSLforLogin"] == "false" ? Request.Url.AbsoluteUri : Request.Url.AbsoluteUri.Replace("http:", "https:")) }))
+            {
+                @Html.AntiForgeryToken()
+                @*<h2 class="form-login-heading" style="padding-top:2px; padding-bottom:2px;">SING IN NOW</h2>*@
+                <div class="login-wrap">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.SurName, new { @class = "form-control", placeholder = "SurName" })
+                    @Html.ValidationMessageFor(m => m.SurName, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "ConfirmPassword" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "UserName" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    <br />                    
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "PhoneNumber" })
+                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                    <br />
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    <br />
+                    <input type="submit" value="Register" class="btn btn-info btn-block" />
+
+                    <div class="registration">
+
+                        @*<p>
+                                @Html.ActionLink("Register as a new user", "Register")
+                            </p>
+                                <p>
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                </p>
+                        *@
+                        <p>
+                            @Html.ActionLink("Contact us", "Contact", "Home")
+                        </p>
+
+                    </div>
+
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

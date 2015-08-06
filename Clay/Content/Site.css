@@ -1,0 +1,197 @@
+﻿body {
+    height:100%;
+    width:100%;
+    padding:10px;
+     /*background: rgba(81, 182, 200,0.8);*/
+     background-image:url('../Images/digital-wall.jpg');
+     background-repeat:no-repeat; 
+    /*background: -moz-linear-gradient(top, rgba(81, 182, 200,1) 0%, rgba(81,200,172,1) 65%, rgba(189, 228, 160,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(81, 182, 200,1)), color-stop(65%, rgba(81,200,172,1)), color-stop(100%, rgba(189, 228, 160,1)));
+    background: -webkit-linear-gradient(top, rgba(81, 182, 200,1) 0%, rgba(81,200,172,1) 65%, rgba(189, 228, 160,1) 100%);
+    background: -o-linear-gradient(top, rgba(81, 182, 200,1) 0%, rgba(81,200,172,1) 65%, rgba(189, 228, 160,1) 100%);
+    background: -ms-linear-gradient(top, rgba(81, 182, 200,1) 0%, rgba(81,200,172,1) 65%, rgba(189, 228, 160,1) 100%);
+    background: linear-gradient(to bottom, rgba(81, 182, 200,1) 0%, rgba(81,200,172,1) 65%, rgba(189, 228, 160,1) 100%);*/
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#51c8ac', endColorstr='#a0e4d4', GradientType=0 );
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+
+/*LOGIN CONFIGURATION PAGE*/
+.form-login {
+	max-width: 358px;
+	margin: 25px auto 0;
+	background: #fff;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+    border: 1px solid #48bcb4;
+}
+
+.form-login h2.form-login-heading {
+	margin: 0;
+	padding: 25px 20px;
+	text-align: center;
+	background: #68dff0;
+	border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	color: #fff;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+.login-wrap {
+	padding: 20px;
+}
+.login-wrap .registration {
+	text-align: center;
+}
+
+#logoutHyperLink{
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+  text-decoration:none;
+}
+
+.dropdown-menu > li > a:hover{
+    background-color:white;
+    color: #333333;
+}
+
+
+/*event list*/
+ .event-list {
+        list-style: none;
+        font-family: 'Lato', sans-serif;
+        margin: 0px;
+        padding: 0px;
+    }
+
+        .event-list > li {
+            background-color: rgb(255, 255, 255) !important;
+            box-shadow: 0px 0px 5px rgb(51, 51, 51) !important;
+            box-shadow: 0px 9px 9px 2px rgba(51, 51, 51, 0.7) !important;
+            padding: 0px !important;
+            margin: 0px 0px 20px !important;
+        }
+
+            .event-list > li > a > time {
+                display: inline-block;
+                width: 100%;
+                color: rgb(255, 255, 255);
+                background-color: rgb(197, 44, 102);
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .event-list > li:nth-child(even) > a > time {
+                background-color: rgb(165, 82, 167);
+            }
+
+            .event-list > li > a > time > .year {
+                display: block;
+				padding: 2px;
+            }
+
+            .event-list > li > a > time > .tomorrow {
+                margin-top: 52px;
+            }
+
+            .event-list > li > a > time > .day {
+                display: block;
+                font-size: 56pt;
+                font-weight: 100;
+                line-height: 1;
+				padding: 5px 0 0 0;
+            }
+
+            .event-list > li a > time > .month {
+                display: block;
+                font-size: 22pt;
+                font-weight: 900;
+                line-height: 0.85;
+				padding: 2px;
+            }
+
+            .event-list > li > img {
+                width: 100%;
+            }
+
+            .event-list > li > a > .info {
+                padding-top: 5px;
+                text-align: center;
+                background-color: white !important;
+                padding-bottom: 4px;
+            }
+
+                .event-list > li > a > .info > .title {
+                    font-size: 17pt;
+                    font-weight: 700;
+                    margin: 0px;
+                }
+
+                .event-list > li > a > .info > .desc {
+                    font-size: 13pt;
+                    font-weight: 300;
+                    margin: 0px;
+                }
+
+            .event-list > li > .info > ul,
+            .event-list > li > .social > ul {
+                display: table;
+                list-style: none;
+                margin: 10px 0px 0px;
+                padding: 0px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .event-list > li > .social > ul {
+                margin: 0px;
+            }
+
+                .event-list > li > .info > ul > li,
+                .event-list > li > .social > ul > li {
+                    display: table-cell;
+                    cursor: pointer;
+                    color: rgb(30, 30, 30);
+                    font-size: 11pt;
+                    font-weight: 300;
+                    padding: 3px 0px;
+                }
+
+            .event-list > li > a > .info > ul > li > a {
+                display: block;
+                width: 100%;
+                color: rgb(30, 30, 30);
+                text-decoration: none;
+            }
+
+            .event-list > li > .social > ul > li {
+                padding: 0px;
+            }
+
+                .event-list > li > .social > ul > li > a {
+                    padding: 3px 0px;
+                }
+
+                .event-list > li > .info > ul > li:hover,
+                .event-list > li > .social > ul > li:hover {
+                    color: rgb(30, 30, 30);
+                    background-color: rgb(200, 200, 200);
+                }

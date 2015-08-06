@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_ListLayout.cshtml";
+    ViewBag.Title = "Entities";
+    ViewBag.PageHeader = "<i class='fa fa-table'></i> Entities";
+}
+<thead>
+    <tr id="search">
+        <th>Key</th>
+        <th>Attributes</th>
+        <th>Type</th>
+        <th>Sort Key</th>
+        <th>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 twoPixelPadding">
+                    <button title="Create" onclick="javascript:window.location=('@Url.Action("Form", "Entity", null)')" class="btn-block btn btn-primary">
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 twoPixelPadding">
+                    <button title="Caution: This will clear your datatable state!" id="clearState" style="margin-right:7px" class="btn-block btn btn-danger">
+                        <i class="fa fa-recycle"></i>
+                    </button>
+                </div>
+            </div>
+        </th>
+    </tr>
+    <tr>
+        <th>Key</th>
+        <th>Attributes</th>
+        <th>Type</th>
+        <th>Sort Key</th>
+        <th class="all" style="text-align:center">Processes</th>
+    </tr>
+</thead>
+
+@* Global variables *@
+<input type="hidden" name="param" data-col="0" value="key" />
+<input type="hidden" name="paramType" value="query" />

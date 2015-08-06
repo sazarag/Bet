@@ -1,0 +1,128 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col col-lg-2 hidden-phone"></div>
+<div class="col col-lg-8 col-xs-12 col-sm-12 no-padding">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form action="@ViewBag.FormUrl" method="post" id="form">
+                @Html.AntiForgeryToken()
+                @RenderBody()
+
+                <button id="submit" type="submit" class="btn btn-info pull-right" style="margin-left: 14px;"><i class="fa fa-check"></i> Submit</button>
+                <a id="back" title="Index" href="@ViewBag.BackUrl" class="btn btn-default pull-right"><i class="fa fa-arrow-left"></i> Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="col col-lg-2  hidden-phone"></div>
+
+
+<script>
+    $(document).ready(function () {
+        var dateSupported = (function () {
+            var el = document.createElement('input'),
+            invalidVal = 'foo';
+            el.setAttribute('type', 'date');
+            el.setAttribute('value', invalidVal);
+            return el.value !== invalidVal;
+        }());
+        //if date input is not supported by current browser init bootstrapt date picker
+        if (!dateSupported) {
+            $('input[type="date"]').prop("readonly", "readonly");
+            $('input[type="date"]').datepicker({
+                format: "yyyy-mm-dd",
+                startDate: $(this).attr("min"),
+                endDate: $(this).attr("max")
+            });
+        }
+
+        $("#form").submit(function (event) {
+            /* stop form from submitting normally */
+            event.preventDefault();
+            /* get some values from elements on the page: */
+            var $form = $(this),
+                url = $form.attr('action');
+            var formError = [];
+            $form.find("input").each(function () {
+                if ($(this).data("required") && $(this).val() == "") {
+                    $(this).parent().addClass("has-error");
+                    var name = $(this).attr("name").replace(/([a-z])([A-Z])/g, '$1 $2');
+                    formError.push({ name: name, message: "<b>Required!</b>" });
+                }
+                if ($(this).data("equal") && $(this).val() != "") {
+                    if ($(this).val() != $($(this).data("equal")).val()) {
+                        $(this).parent().addClass("has-error");
+                        console.log($(this).data("equal"));
+                        $("" + $(this).data("equal")).parent().addClass("has-error");
+                        formError.push({ name: "", message: "Passwords does not match" });
+                    }
+                }
+            });
+            if (formError.length > 0) {
+                var message = "<div class='alert alert-danger'>";
+                for (i in formError) {
+                    message += formError[i].name + " is " + formError[i].message + "<br/>";
+                }
+                message += "</div>";
+                window.CreateModal("<i class='fa fa-exclamation-triangle'></i> Missing Fields", "The record cannot be submitted.<br/>" + message, false, null, "", "Cancel");
+                return false;
+            }
+            /* Send the data using post */
+            var $submitButton = $("button[type='submit']");
+            $submitButton.find("i").removeClass("fa fa-check");
+            $submitButton.find("i").addClass("fa fa-spin fa-spinner");
+            $submitButton.attr("disabled", "disabled")
+
+          
+            if ($("#fileContainedForm").length > 0) {
+                var formData = new FormData($(this)[0]);
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: formData,
+                    async: false,
+                    success: function (data) {
+                        $submitButton.find("i").removeClass("fa fa-spin fa-spinner");
+                        $submitButton.find("i").addClass("fa fa-check");
+                        $submitButton.removeAttr("disabled")
+                        if (data == "True") {
+                            window.location = "@ViewBag.BackUrl";
+                        } else {
+                            if ($("#errorMessages").length) {
+                                window.CreateModal("Operation Failed", $("#errorMessages").val(), false, null, "", "Cancel");
+                            } else {
+                                window.CreateModal("Operation Failed", "The record couldn't added.Try Again", false, null, "", "Cancel");
+                            }
+                        }
+
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+
+            } else {
+                var data = $form.serialize();
+                var posting = $.post(url, data);
+                /* Alerts the results */
+                posting.done(function (data) {
+                    $submitButton.find("i").removeClass("fa fa-spin fa-spinner");
+                    $submitButton.find("i").addClass("fa fa-check");
+                    $submitButton.removeAttr("disabled")
+                    if (data == "True") {
+                        window.location = "@ViewBag.BackUrl";
+                    } else {
+                        window.CreateModal("Operation Failed", "The record couldn't added.Try Again", false, null, "", "Cancel");
+                    }
+
+                });
+
+            }
+         
+        });
+
+    });
+</script>

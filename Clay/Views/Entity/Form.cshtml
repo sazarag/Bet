@@ -1,0 +1,45 @@
+﻿@model Repository.Model.Entity
+@{
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+   // ViewBag.Title = Model == null ? "Create Entity" : "Update Entity";
+	ViewBag.PageHeader = Model == null ? "<i class='fa fa-table'></i> Create Entity" : "<i class='fa fa-table'></i> Update Entity";
+    ViewBag.FormUrl = Model == null ? Url.Action("Create", "Entity", null) : Url.Action("Edit", "Entity", null);
+    ViewBag.BackUrl = Url.Action("Index", "Entity", null);
+}
+<style>
+
+</style>
+
+<div class="form-group">
+    <label for="startDate">Key</label>
+    <input type="text" id ="Key" class="form-control" data-required="true" @(Model != null ? "readonly" : "") name="Key" value="@(Model!=null?Model.Key:"")" style="max-width:100%" placeholder="Enter key">
+</div>
+<div id="subEntities"></div>
+<div class="form-group">
+    <label for="startDate">Attributes</label>
+    <textarea style="max-width:100%" class="form-control" name="Attributes" rows="5">@(Model != null ? Model.Attributes : "")</textarea>
+ </div>
+<div class="form-group">
+    <label for="startDate">Type</label>
+    <input type="text" class="form-control" name="Type" value="@(Model!=null?Model.Type:"")" style="max-width:100%" placeholder="Type">
+</div>
+<div class="form-group">
+    <label for="startDate">Sort Key</label>
+    <input type="number" style="max-width:100%" class="form-control" name="SortKey" value="@(Model!=null?(Model.SortKey.HasValue?Model.SortKey.Value.ToString() : ""):"")"> 
+</div>
+@if (Model == null) {  
+<script>
+    $(document).ready(function () {
+        $("#Key").keyup(function (e) {
+            var str = $(this).val();
+            $("#subEntities").html("");
+            var subEntities = str.split("/").filter(Boolean);
+            for (var i = subEntities.length ; i > subEntities.length - 1 ; i--) {
+                $("#subEntities").append('<div class="form-group"><label for="startDate">Sub Entity Number For <b>' + subEntities[subEntities.length - 1] + '</b></label><input type="text" id ="" class="form-control"  min="0" name="number" value="" style="max-width:100%" placeholder="Sub Entity Number"></div>');
+            }
+        });
+    });
+</script>
+
+}
+<input type="hidden" id="errorMessages" value="The record could not be added. Possible resons:\n Be sure the entered entity has a parent.">

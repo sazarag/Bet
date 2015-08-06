@@ -1,0 +1,1 @@
+﻿Server=tcp:u069yx7r1t.database.windows.net,1433;Database=ClayDemo_db;User ID=ClaySazara@u069yx7r1t;Password={DBPassClay1};Trusted_Connection=False;Encrypt=True;Connection Timeout=30;

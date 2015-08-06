@@ -1,0 +1,29 @@
+﻿@Styles.Render("~/Content/datatable.css")
+@Styles.Render("~/Content/datatable/css/jquery.dataTables.css")
+@Styles.Render("~/Content/datatable/css/dataTables.responsive.css")
+@Styles.Render("~/Content/datatable/css/dataTables.colVis.css")
+@Styles.Render("~/Content/datatable/css/dataTables.colReorder.css")
+
+ 
+ 
+@Scripts.Render("~/Content/datatable/js/jquery.dataTables.js")
+@Scripts.Render("~/Content/datatable/js/jquery.dataTables.columnFilter.js")
+@Scripts.Render("~/Content/datatable/js/dataTables.responsive.js")
+@Scripts.Render("~/Content/datatable/js/dataTables.colReorder.js")
+@Scripts.Render("~/Content/datatable/js/dataTables.colVis.js")
+@Scripts.Render("~/Content/datatable.js") 
+ 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="display responsive no-wrap" width="100%">
+            @RenderBody()
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+@* Global ajax path variable *@
+<input type="hidden" name="ajaxPath" value="@Url.Content("~")@(ViewContext.RouteData.Values["controller"])">

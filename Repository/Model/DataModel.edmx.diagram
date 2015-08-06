@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="832081ccc7a14fcca887de97fb094e9f" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="LockDBModel.AspNetRole" Width="1.5" PointX="6.75" PointY="6.25" />
+        <EntityTypeShape EntityType="LockDBModel.AspNetUserClaim" Width="1.5" PointX="2.75" PointY="5.25" />
+        <EntityTypeShape EntityType="LockDBModel.AspNetUserLogin" Width="1.5" PointX="0.5" PointY="4.5" />
+        <EntityTypeShape EntityType="LockDBModel.AspNetUserRole" Width="1.5" PointX="6.75" PointY="3.625" />
+        <EntityTypeShape EntityType="LockDBModel.AspNetUser" Width="1.5" PointX="4.625" PointY="1.25" />
+        <EntityTypeShape EntityType="LockDBModel.Assignment" Width="1.5" PointX="4.625" PointY="6.125" />
+        <EntityTypeShape EntityType="LockDBModel.Entity" Width="1.5" PointX="2.125" PointY="0.875" />
+        <EntityTypeShape EntityType="LockDBModel.HistoryLog" Width="1.5" PointX="6.75" PointY="1.25" />
+        <AssociationConnector Association="LockDBModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="LockDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LockDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LockDBModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LockDBModel.fk_Assignments_User" />
+        <AssociationConnector Association="LockDBModel.fk_PerHis" />
+        <AssociationConnector Association="LockDBModel.FK_Assignments_Entities" />
+        <AssociationConnector Association="LockDBModel.fk_PerEnt" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

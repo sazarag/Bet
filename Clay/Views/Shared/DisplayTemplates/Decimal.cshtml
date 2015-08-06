@@ -1,0 +1,12 @@
+﻿@model decimal?
+
+@{
+    string val = "";
+    if (Model.HasValue)
+    {
+        val = String.Format(
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    "{0:0.00##########}", (decimal)Model);
+    }
+    <span>@val</span>
+}

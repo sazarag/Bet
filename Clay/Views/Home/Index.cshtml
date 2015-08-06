@@ -1,0 +1,74 @@
+﻿@model IList<Repository.Model.Assignment>
+@Styles.Render("~/Content/pick.css")
+@{
+    ViewBag.Title = "Doors";
+    ViewBag.PageHeader = "<i class='fa fa-ticket'></i> Your Accessible Doors";
+}
+
+<h2></h2>
+<div class="container">
+    <div class="row" style="background-color:rgba(255, 255, 255,0.5); border-radius:4px;">
+        <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+            <ul class="event-list" style="padding:0">
+                @if (Model.Count > 0)
+                {
+                    foreach (var assign in Model)
+                    {
+                        <li>
+                            <a id="@assign.UserId" name="@assign.Entity.Key" class="reset-this" href="#" onclick="openTheDoor(this)">
+                                <div class="info">
+                                    <h2 class="title"><i class="fa fa-key"></i> @Repository.Helpers.GetSplittedItem(assign.Entity.Attributes, "Name")</h2>
+                                    <p class="desc"></p>
+                                    <ul></ul>
+                                </div>
+                            </a>
+                        </li>
+
+                    }
+                }
+                else
+                {
+                    <li>
+                        <div class="info text-danger" style="text-align: center;padding: 19px; background-color: #f8f8f8; border-radius:4px;">
+                            <h2 class="title"><i class="fa fa-warning"></i>  No Game Assignment Found!</h2>
+                            <p class="desc"></p>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function openTheDoor(ele) {
+        var over = document.getElementById("overlay");
+        over.style.display = "table";
+        over.style.top = "0px";
+        $.ajax({
+            url: home + "/History/OpenDoor?entityKey=" + ele.name,
+            type: 'GET',
+            async: true,
+            success: function (data) {
+                over.style.display = "none";
+                over.style.top = "2500px";
+
+                if (data == "True") {
+                    window.CreateModal("Operation Success", "The door is opened.", false, null, "", "OK");
+                } else {
+                    if ($("#errorMessages").length) {
+                        window.CreateModal("Operation Failed", $("#errorMessages").val(), false, null, "", "Cancel");
+                    } else {
+                        window.CreateModal("Operation Failed", "The door could not opened.Try Again", false, null, "", "Cancel");
+                    }
+                }
+
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+    }
+</script>
+

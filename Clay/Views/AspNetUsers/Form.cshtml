@@ -1,0 +1,67 @@
+﻿@model Repository.Model.AspNetUser
+
+@{
+
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+	//ViewBag.Title = Model == null ? "Create User" : "Update User";
+	ViewBag.PageHeader = Model == null ? "<i class='fa fa-table'></i> Create User" : "<i class='fa fa-table'></i> Update User";
+    ViewBag.FormUrl = Model == null ? Url.Action("Create", "AspNetUsers", null) : Url.Action("Edit", "AspNetUsers", null);
+    ViewBag.BackUrl = Url.Action("Index", "AspNetUsers", null);
+}
+<input type="hidden" name="Id" value="@(Model!=null?Model.Id:Guid.NewGuid().ToString())" />
+<div class="form-group">
+    <label for="startDate">User Name</label>
+    <input type="text" class="form-control" data-required="true" name="UserName" value="@(Model!=null?Model.UserName:"")" style="max-width:100%" style="max-width:100%" placeholder="Enter a  username">
+</div>
+<div class="form-group">
+    <label for="endDate">Email</label>
+    <input type="email" class="form-control" data-required="true" name="Email" value="@(Model!=null?Model.Email:"")" style="max-width:100%" style="max-width:100%" placeholder="Enter email">
+</div>
+<div class="form-group">
+    <label for="exampleInputFile">Email Confirmed</label>
+    <input type='checkbox' value="True" name="EmailConfirmed" @(Model != null ? (Model.EmailConfirmed ? "checked" : "") : "") />
+</div>
+@if (Model != null)
+{
+    <div class="form-group">
+        <label for="startDate">Update With New Password</label>
+        <input type="password" class="form-control" name="NewPassword" value="" style="max-width:100%" placeholder="Enter a  password">
+    </div>
+    <div class="form-group">
+        <label for="startDate">Validate New Password</label>
+        <input type="password" class="form-control" name="newPasswordValidate" value="" style="max-width:100%" placeholder="Validate password hash">
+    </div>
+}
+@if (Model == null)
+{
+    <div class="form-group">
+        <label for="startDate">Password</label>
+        <input type="password" id="PasswordHash" class="form-control" name="PasswordHash" value="" style="max-width:100%" placeholder="Enter a  password">
+    </div>
+    <div class="form-group">
+        <label for="startDate">Confirm Password</label>
+        <input type="password" data-equal="#PasswordHash" class="form-control" name="PasswordHash2" value="" style="max-width:100%" placeholder="Confirm password">
+    </div>
+}
+<div class="form-group">
+    <label for="startDate">Enter a Phone Number</label>
+    <input type="tel" class="form-control" data-required="true" name="PhoneNumber" value="@(Model!=null?Model.PhoneNumber:"")" style="max-width:100%" placeholder="Enter a  phone number">
+</div>
+<div class="form-group">
+    <label for="exampleInputFile">Phone Confirmed</label>
+    <input type='checkbox' value="True" name="PhoneNumberConfirmed" @(Model != null ? (Model.PhoneNumberConfirmed ? "checked" : "") : "") />
+</div>
+<div class="form-group">
+    <label for="exampleInputFile">Two Factor Enabled</label>
+    <input type='checkbox' value="True" name="TwoFactorEnabled" @(Model != null ? (Model.TwoFactorEnabled ? "checked" : "") : "") />
+</div>
+<div class="form-group">
+    <label for="exampleInputFile">Lockout Enabled</label>
+    <input type='checkbox' value="True" name="LockoutEnabled" @(Model != null ? (Model.LockoutEnabled ? "checked" : "") : "") />
+</div>
+<div class="form-group">
+    <label for="endDate">Lockout End Date</label>
+    <input type="date" class="form-control" name="LockoutEndDateUtc" id="endDate" value="@(Model!=null?(Model.LockoutEndDateUtc.HasValue ? Model.LockoutEndDateUtc.Value.ToString("yyyy-MM-dd"):""):"")" style="max-width:100%" placeholder="Enter End Date" />
+</div>
+
+

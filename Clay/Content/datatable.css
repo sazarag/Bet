@@ -1,0 +1,62 @@
+﻿.dataTables_length {
+    margin-right: 14px !important;
+    padding-top: 9px;
+    padding-left: 15px;
+    height: 40px;
+}
+
+table tbody tr td:last-child {
+    text-align: center;
+}
+
+    table tbody tr td:last-child a {
+        margin-right: 1px;
+        margin-left: 12px;
+    }
+
+.twoPixelPadding {
+    padding: 2px !important;
+}
+
+
+.dataTables_wrapper .dataTables_paginate {
+    display: inline-flex !important;
+    display: -webkit-inline-box;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 4px !important;
+        margin-right: 8px;
+    }
+
+.icon-stack {
+    display: inline-block;
+    height: 2em;
+    line-height: 2em;
+    position: relative;
+    vertical-align: -35%;
+    width: 2em;
+}
+
+    .icon-stack .icon-stack-base {
+        font-size: 2em;
+    }
+
+    .icon-stack [class^="icon-"], .icon-stack [class*=" icon-"] {
+        display: block;
+        font-size: 1em;
+        height: 100%;
+        line-height: inherit;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+    }
+
+    .icon-stack .glyphicon {
+        font-size: 2em;
+    }
+
+.glyphicon-ban-circle {
+    color: black;
+}
+ 
