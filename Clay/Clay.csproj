@@ -281,6 +281,7 @@
     <Content Include="Images\digital-wall.jpg" />
     <Content Include="Images\load.gif" />
     <Content Include="Images\technology.jpg" />
+    <Content Include="Images\transparent-bg.png" />
     <Content Include="Scripts\ai.0.15.0-build32981.js" />
     <Content Include="Scripts\ai.0.15.0-build32981.min.js" />
     <Content Include="Scripts\bootstrap.js" />

@@ -3,7 +3,8 @@
     width:100%;
     padding:10px;
      /*background: rgba(81, 182, 200,0.8);*/
-     background-image:url('../Images/digital-wall.jpg');
+     background-color: #cbc8c5;
+     /*background-image:url('../Images/digital-wall.jpg');*/
      background-repeat:no-repeat; 
     /*background: -moz-linear-gradient(top, rgba(81, 182, 200,1) 0%, rgba(81,200,172,1) 65%, rgba(189, 228, 160,1) 100%);
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(81, 182, 200,1)), color-stop(65%, rgba(81,200,172,1)), color-stop(100%, rgba(189, 228, 160,1)));

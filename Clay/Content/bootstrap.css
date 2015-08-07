@@ -6814,3 +6814,11 @@ td.visible-print {
     display: none !important;
   }
 }
+
+@media screen and (min-width: 768px)
+{
+    .col-md-6 {
+        width: 50%;
+        float: left;
+    }
+}
